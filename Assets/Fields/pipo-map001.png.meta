@@ -274,7 +274,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -335,9 +335,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 316.8
+        y: 320
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,10 +355,10 @@ TextureImporter:
       name: pipo-map001_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 316.8
+        x: 0
+        y: 288
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,10 +376,10 @@ TextureImporter:
       name: pipo-map001_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 316.8
+        x: 32
+        y: 288
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,10 +397,10 @@ TextureImporter:
       name: pipo-map001_3
       rect:
         serializedVersion: 2
-        x: 128
-        y: 316.8
+        x: 64
+        y: 288
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,10 +418,10 @@ TextureImporter:
       name: pipo-map001_4
       rect:
         serializedVersion: 2
-        x: 160
-        y: 316.8
+        x: 96
+        y: 288
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,10 +439,10 @@ TextureImporter:
       name: pipo-map001_5
       rect:
         serializedVersion: 2
-        x: 192
-        y: 316.8
+        x: 128
+        y: 288
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,10 +460,10 @@ TextureImporter:
       name: pipo-map001_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 281.8
+        x: 160
+        y: 288
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -481,10 +481,10 @@ TextureImporter:
       name: pipo-map001_7
       rect:
         serializedVersion: 2
-        x: 32
-        y: 281.8
+        x: 192
+        y: 288
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -502,10 +502,10 @@ TextureImporter:
       name: pipo-map001_8
       rect:
         serializedVersion: 2
-        x: 64
-        y: 281.8
+        x: 224
+        y: 288
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -523,10 +523,10 @@ TextureImporter:
       name: pipo-map001_9
       rect:
         serializedVersion: 2
-        x: 96
-        y: 281.8
+        x: 0
+        y: 256
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -544,10 +544,10 @@ TextureImporter:
       name: pipo-map001_10
       rect:
         serializedVersion: 2
-        x: 128
-        y: 281.8
+        x: 32
+        y: 256
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -565,10 +565,10 @@ TextureImporter:
       name: pipo-map001_11
       rect:
         serializedVersion: 2
-        x: 160
-        y: 281.8
+        x: 64
+        y: 256
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -586,10 +586,10 @@ TextureImporter:
       name: pipo-map001_12
       rect:
         serializedVersion: 2
-        x: 192
-        y: 281.8
+        x: 96
+        y: 256
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -607,10 +607,10 @@ TextureImporter:
       name: pipo-map001_13
       rect:
         serializedVersion: 2
-        x: 224
-        y: 281.8
+        x: 128
+        y: 256
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -628,10 +628,10 @@ TextureImporter:
       name: pipo-map001_14
       rect:
         serializedVersion: 2
-        x: 0
-        y: 246.8
+        x: 160
+        y: 256
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -649,10 +649,10 @@ TextureImporter:
       name: pipo-map001_15
       rect:
         serializedVersion: 2
-        x: 32
-        y: 246.8
+        x: 192
+        y: 256
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -670,10 +670,10 @@ TextureImporter:
       name: pipo-map001_16
       rect:
         serializedVersion: 2
-        x: 64
-        y: 246.8
+        x: 224
+        y: 256
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -691,10 +691,10 @@ TextureImporter:
       name: pipo-map001_17
       rect:
         serializedVersion: 2
-        x: 96
-        y: 246.8
+        x: 0
+        y: 224
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -712,10 +712,10 @@ TextureImporter:
       name: pipo-map001_18
       rect:
         serializedVersion: 2
-        x: 128
-        y: 246.8
+        x: 32
+        y: 224
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -733,10 +733,10 @@ TextureImporter:
       name: pipo-map001_19
       rect:
         serializedVersion: 2
-        x: 160
-        y: 246.8
+        x: 64
+        y: 224
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -754,10 +754,10 @@ TextureImporter:
       name: pipo-map001_20
       rect:
         serializedVersion: 2
-        x: 192
-        y: 246.8
+        x: 96
+        y: 224
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -775,10 +775,10 @@ TextureImporter:
       name: pipo-map001_21
       rect:
         serializedVersion: 2
-        x: 224
-        y: 246.8
+        x: 128
+        y: 224
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -796,10 +796,10 @@ TextureImporter:
       name: pipo-map001_22
       rect:
         serializedVersion: 2
-        x: 0
-        y: 211.8
+        x: 160
+        y: 224
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -817,10 +817,10 @@ TextureImporter:
       name: pipo-map001_23
       rect:
         serializedVersion: 2
-        x: 32
-        y: 211.8
+        x: 192
+        y: 224
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -838,10 +838,10 @@ TextureImporter:
       name: pipo-map001_24
       rect:
         serializedVersion: 2
-        x: 64
-        y: 211.8
+        x: 224
+        y: 224
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -859,10 +859,10 @@ TextureImporter:
       name: pipo-map001_25
       rect:
         serializedVersion: 2
-        x: 96
-        y: 211.8
+        x: 0
+        y: 192
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -880,10 +880,10 @@ TextureImporter:
       name: pipo-map001_26
       rect:
         serializedVersion: 2
-        x: 128
-        y: 211.8
+        x: 32
+        y: 192
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -901,10 +901,10 @@ TextureImporter:
       name: pipo-map001_27
       rect:
         serializedVersion: 2
-        x: 160
-        y: 211.8
+        x: 64
+        y: 192
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -922,10 +922,10 @@ TextureImporter:
       name: pipo-map001_28
       rect:
         serializedVersion: 2
-        x: 192
-        y: 211.8
+        x: 96
+        y: 192
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -943,10 +943,10 @@ TextureImporter:
       name: pipo-map001_29
       rect:
         serializedVersion: 2
-        x: 224
-        y: 211.8
+        x: 128
+        y: 192
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -964,10 +964,10 @@ TextureImporter:
       name: pipo-map001_30
       rect:
         serializedVersion: 2
-        x: 0
-        y: 176.8
+        x: 160
+        y: 192
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -985,10 +985,10 @@ TextureImporter:
       name: pipo-map001_31
       rect:
         serializedVersion: 2
-        x: 32
-        y: 176.8
+        x: 192
+        y: 192
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1006,10 +1006,10 @@ TextureImporter:
       name: pipo-map001_32
       rect:
         serializedVersion: 2
-        x: 64
-        y: 176.8
+        x: 224
+        y: 192
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1027,10 +1027,10 @@ TextureImporter:
       name: pipo-map001_33
       rect:
         serializedVersion: 2
-        x: 96
-        y: 176.8
+        x: 0
+        y: 160
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1048,10 +1048,10 @@ TextureImporter:
       name: pipo-map001_34
       rect:
         serializedVersion: 2
-        x: 128
-        y: 176.8
+        x: 32
+        y: 160
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1069,10 +1069,10 @@ TextureImporter:
       name: pipo-map001_35
       rect:
         serializedVersion: 2
-        x: 160
-        y: 176.8
+        x: 64
+        y: 160
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1090,10 +1090,10 @@ TextureImporter:
       name: pipo-map001_36
       rect:
         serializedVersion: 2
-        x: 192
-        y: 176.8
+        x: 96
+        y: 160
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1111,10 +1111,10 @@ TextureImporter:
       name: pipo-map001_37
       rect:
         serializedVersion: 2
-        x: 224
-        y: 176.8
+        x: 128
+        y: 160
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1132,10 +1132,10 @@ TextureImporter:
       name: pipo-map001_38
       rect:
         serializedVersion: 2
-        x: 0
-        y: 141.8
+        x: 160
+        y: 160
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1153,10 +1153,10 @@ TextureImporter:
       name: pipo-map001_39
       rect:
         serializedVersion: 2
-        x: 32
-        y: 141.8
+        x: 192
+        y: 160
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1174,10 +1174,10 @@ TextureImporter:
       name: pipo-map001_40
       rect:
         serializedVersion: 2
-        x: 64
-        y: 141.8
+        x: 224
+        y: 160
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1195,10 +1195,10 @@ TextureImporter:
       name: pipo-map001_41
       rect:
         serializedVersion: 2
-        x: 96
-        y: 141.8
+        x: 0
+        y: 128
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1216,10 +1216,10 @@ TextureImporter:
       name: pipo-map001_42
       rect:
         serializedVersion: 2
-        x: 128
-        y: 141.8
+        x: 32
+        y: 128
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1237,10 +1237,10 @@ TextureImporter:
       name: pipo-map001_43
       rect:
         serializedVersion: 2
-        x: 160
-        y: 141.8
+        x: 64
+        y: 128
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1258,10 +1258,10 @@ TextureImporter:
       name: pipo-map001_44
       rect:
         serializedVersion: 2
-        x: 192
-        y: 141.8
+        x: 96
+        y: 128
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1279,10 +1279,10 @@ TextureImporter:
       name: pipo-map001_45
       rect:
         serializedVersion: 2
-        x: 224
-        y: 141.8
+        x: 128
+        y: 128
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1300,10 +1300,10 @@ TextureImporter:
       name: pipo-map001_46
       rect:
         serializedVersion: 2
-        x: 0
-        y: 106.8
+        x: 160
+        y: 128
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1321,10 +1321,10 @@ TextureImporter:
       name: pipo-map001_47
       rect:
         serializedVersion: 2
-        x: 32
-        y: 106.8
+        x: 192
+        y: 128
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1342,10 +1342,10 @@ TextureImporter:
       name: pipo-map001_48
       rect:
         serializedVersion: 2
-        x: 64
-        y: 106.8
+        x: 224
+        y: 128
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1363,10 +1363,10 @@ TextureImporter:
       name: pipo-map001_49
       rect:
         serializedVersion: 2
-        x: 96
-        y: 106.8
+        x: 0
+        y: 96
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1384,10 +1384,10 @@ TextureImporter:
       name: pipo-map001_50
       rect:
         serializedVersion: 2
-        x: 128
-        y: 106.8
+        x: 32
+        y: 96
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1405,10 +1405,10 @@ TextureImporter:
       name: pipo-map001_51
       rect:
         serializedVersion: 2
-        x: 160
-        y: 106.8
+        x: 64
+        y: 96
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1426,10 +1426,10 @@ TextureImporter:
       name: pipo-map001_52
       rect:
         serializedVersion: 2
-        x: 192
-        y: 106.8
+        x: 96
+        y: 96
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1447,10 +1447,10 @@ TextureImporter:
       name: pipo-map001_53
       rect:
         serializedVersion: 2
-        x: 224
-        y: 106.8
+        x: 128
+        y: 96
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1468,10 +1468,10 @@ TextureImporter:
       name: pipo-map001_54
       rect:
         serializedVersion: 2
-        x: 0
-        y: 71.8
+        x: 160
+        y: 96
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1489,10 +1489,10 @@ TextureImporter:
       name: pipo-map001_55
       rect:
         serializedVersion: 2
-        x: 32
-        y: 71.8
+        x: 192
+        y: 96
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1510,10 +1510,10 @@ TextureImporter:
       name: pipo-map001_56
       rect:
         serializedVersion: 2
-        x: 64
-        y: 71.8
+        x: 0
+        y: 64
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1531,10 +1531,10 @@ TextureImporter:
       name: pipo-map001_57
       rect:
         serializedVersion: 2
-        x: 96
-        y: 71.8
+        x: 32
+        y: 64
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1552,10 +1552,10 @@ TextureImporter:
       name: pipo-map001_58
       rect:
         serializedVersion: 2
-        x: 128
-        y: 71.8
+        x: 64
+        y: 64
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1573,10 +1573,10 @@ TextureImporter:
       name: pipo-map001_59
       rect:
         serializedVersion: 2
-        x: 160
-        y: 71.8
+        x: 96
+        y: 64
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1594,10 +1594,10 @@ TextureImporter:
       name: pipo-map001_60
       rect:
         serializedVersion: 2
-        x: 192
-        y: 71.8
+        x: 128
+        y: 64
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1615,10 +1615,10 @@ TextureImporter:
       name: pipo-map001_61
       rect:
         serializedVersion: 2
-        x: 0
-        y: 36.8
+        x: 160
+        y: 64
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1636,10 +1636,10 @@ TextureImporter:
       name: pipo-map001_62
       rect:
         serializedVersion: 2
-        x: 32
-        y: 36.8
+        x: 192
+        y: 64
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1657,10 +1657,10 @@ TextureImporter:
       name: pipo-map001_63
       rect:
         serializedVersion: 2
-        x: 64
-        y: 36.8
+        x: 0
+        y: 32
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1678,10 +1678,10 @@ TextureImporter:
       name: pipo-map001_64
       rect:
         serializedVersion: 2
-        x: 96
-        y: 36.8
+        x: 32
+        y: 32
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1699,10 +1699,10 @@ TextureImporter:
       name: pipo-map001_65
       rect:
         serializedVersion: 2
-        x: 128
-        y: 36.8
+        x: 64
+        y: 32
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1720,10 +1720,10 @@ TextureImporter:
       name: pipo-map001_66
       rect:
         serializedVersion: 2
-        x: 160
-        y: 36.8
+        x: 96
+        y: 32
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1741,10 +1741,10 @@ TextureImporter:
       name: pipo-map001_67
       rect:
         serializedVersion: 2
-        x: 192
-        y: 36.8
+        x: 128
+        y: 32
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1762,10 +1762,10 @@ TextureImporter:
       name: pipo-map001_68
       rect:
         serializedVersion: 2
-        x: 224
-        y: 36.8
+        x: 160
+        y: 32
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1783,10 +1783,10 @@ TextureImporter:
       name: pipo-map001_69
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1.7999992
+        x: 192
+        y: 32
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1804,10 +1804,10 @@ TextureImporter:
       name: pipo-map001_70
       rect:
         serializedVersion: 2
-        x: 32
-        y: 1.7999992
+        x: 224
+        y: 32
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1825,10 +1825,10 @@ TextureImporter:
       name: pipo-map001_71
       rect:
         serializedVersion: 2
-        x: 64
-        y: 1.7999992
+        x: 0
+        y: 0
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1846,10 +1846,10 @@ TextureImporter:
       name: pipo-map001_72
       rect:
         serializedVersion: 2
-        x: 96
-        y: 1.7999992
+        x: 32
+        y: 0
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1867,10 +1867,10 @@ TextureImporter:
       name: pipo-map001_73
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1.7999992
+        x: 64
+        y: 0
         width: 32
-        height: 35.2
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1880,48 +1880,6 @@ TextureImporter:
       bones: []
       spriteID: b6b0e7ac835e1cf70800000000000000
       internalID: 9205891145400191851
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pipo-map001_74
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 1.7999992
-        width: 32
-        height: 35.2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7e7aaf1ca5d96b20800000000000000
-      internalID: 3128266351427878525
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pipo-map001_75
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 1.7999992
-        width: 32
-        height: 35.2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 324b3539ce9391f90800000000000000
-      internalID: -6982486059014441949
       vertices: []
       indices: 
       edges: []
