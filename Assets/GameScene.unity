@@ -6164,6 +6164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10aba0399961b01459a6117a1766fa7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxMoveCount: 5
   tilemapCollider: {fileID: 1374878863}
   isMoving: 0
 --- !u!1 &705507993

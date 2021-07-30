@@ -6,12 +6,16 @@ using DG.Tweening;
 
 public class MapMoveController : MonoBehaviour
 {
-    private Vector3 movePos;
-    private float moveDuration = 0.5f;
+    private Vector3 movePos; //キー入力の入れ物用
+    private float moveDuration = 0.5f; //DOMoveの移動する際にかかる時間
     [SerializeField]
-    private Tilemap tilemapCollider;
+    private float MaxMoveCount; //動ける最大回数
     [SerializeField]
-    private bool isMoving;
+    private Tilemap tilemapCollider;　//衝突判定用
+    [SerializeField]
+    private bool isMoving;　//動けるかの判定
+
+    private Tween tween;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,14 +32,20 @@ public class MapMoveController : MonoBehaviour
     /// </summary>
     public void InputMove()
     {
+        //移動中には処理しない
         if (isMoving)
         {
             return;
         }
-
+        if (MaxMoveCount == 0)
+        {
+            MaxMoveCount = 0;
+            
+        }
+        //キー入力の受け取り
         movePos.x = Input.GetAxisRaw("Horizontal");
         movePos.y = Input.GetAxisRaw("Vertical");
-
+        MaxMoveCount--;
         isMoving = true;
 
         //斜め移動の抑制
@@ -43,23 +53,32 @@ public class MapMoveController : MonoBehaviour
         {
             movePos.y = 0;
         }
-
+        
+        // タイルマップの座標に変換
         Vector3Int tilePos = tilemapCollider.WorldToCell(transform.position + movePos);
 
         Debug.Log(tilemapCollider.GetColliderType(tilePos));
 
+        // Grid のコライダーの場合
         if (tilemapCollider.GetColliderType(tilePos) == Tile.ColliderType.Grid)
         {
+            // 移動しないで終了
             isMoving = false;
         }
-        else
+        else // Grid 以外の場合
         {
-            Move(transform.position + movePos);
+            if (MaxMoveCount>0) {
+                Move(transform.position + movePos);
+               
+            }
         }
     }
 
     private void Move(Vector2 destination)
     {
-        transform.DOMove(destination, moveDuration).SetEase(Ease.Linear).OnComplete(() => { isMoving = false; });
+        // 移動
+        tween=transform.DOMove(destination, moveDuration).SetEase(Ease.Linear).OnComplete(() => { isMoving = false; });
+        
+        
     }
 }
