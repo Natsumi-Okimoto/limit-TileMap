@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private float vertical;
 
+    private float Scale;
+        
+
+
     
 
     private Animator anim;
@@ -24,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        Scale = transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -72,15 +77,16 @@ public class PlayerController : MonoBehaviour
         float pos = 0;
         if (dir.x > 0)
         {
-            pos = 180;    // 右
+            pos = 1;    // 右
         }
         else
         {
-            pos = 0;   // 左
+            pos = -1;   // 左
         }
 
         // プレイヤーの向きを進行方向に合わせる(上下移動の際には変更しない)
-        transform.rotation = Quaternion.Euler(new Vector3(0, pos, 0));
+        //transform.rotation = Quaternion.Euler(new Vector3(0, pos, 0));
+        transform.localScale = new Vector3(Scale * pos, transform.localScale.y, transform.localScale.z);
     }
 
     //private void SyncMoveAnimation()
