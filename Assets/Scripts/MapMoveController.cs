@@ -93,6 +93,7 @@ public class MapMoveController : MonoBehaviour
         if(collision.TryGetComponent(out EnemySymbol enemySymbol))
         {
             Debug.Log(enemySymbol.symbolType);
+            enemySymbol.StartBattle();
         }
     }
 

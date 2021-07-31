@@ -54,6 +54,9 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(moveDir.x * moveSpeed,rb.velocity.y, moveDir.z * moveSpeed);
 
         LookDirection(moveDir);
+
+        anim.SetFloat("Speed", moveDir.x != 0 ? Mathf.Abs(moveDir.x) : Mathf.Abs(moveDir.z));
+
     }
 
     /// <summary>
