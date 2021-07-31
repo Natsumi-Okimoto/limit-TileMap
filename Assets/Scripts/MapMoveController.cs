@@ -39,39 +39,45 @@ public class MapMoveController : MonoBehaviour
         }
         if (MaxMoveCount == 0)
         {
-            MaxMoveCount = 0;
+            return;
             
         }
         //キー入力の受け取り
         movePos.x = Input.GetAxisRaw("Horizontal");
         movePos.y = Input.GetAxisRaw("Vertical");
-        MaxMoveCount--;
-        isMoving = true;
 
-        //斜め移動の抑制
-        if (Mathf.Abs(movePos.x) != 0)
+        if (movePos.x != 0||movePos.y!=0)
         {
-            movePos.y = 0;
-        }
-        
-        // タイルマップの座標に変換
-        Vector3Int tilePos = tilemapCollider.WorldToCell(transform.position + movePos);
+            isMoving = true;
 
-        Debug.Log(tilemapCollider.GetColliderType(tilePos));
+            //斜め移動の抑制
+            if (Mathf.Abs(movePos.x) != 0)
+            {
+                movePos.y = 0;
+            }
 
-        // Grid のコライダーの場合
-        if (tilemapCollider.GetColliderType(tilePos) == Tile.ColliderType.Grid)
-        {
-            // 移動しないで終了
-            isMoving = false;
-        }
-        else // Grid 以外の場合
-        {
-            if (MaxMoveCount>0) {
-                Move(transform.position + movePos);
-               
+            // タイルマップの座標に変換
+            Vector3Int tilePos = tilemapCollider.WorldToCell(transform.position + movePos);
+
+            Debug.Log(tilemapCollider.GetColliderType(tilePos));
+
+            // Grid のコライダーの場合
+            if (tilemapCollider.GetColliderType(tilePos) == Tile.ColliderType.Grid)
+            {
+                // 移動しないで終了
+                isMoving = false;
+            }
+            else // Grid 以外の場合
+            {
+                if (MaxMoveCount > 0)
+                {
+                    Move(transform.position + movePos);
+                    MaxMoveCount--;
+                }
             }
         }
+        
+        
     }
 
     private void Move(Vector2 destination)
