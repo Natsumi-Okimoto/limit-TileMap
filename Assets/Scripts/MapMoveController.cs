@@ -9,7 +9,7 @@ public class MapMoveController : MonoBehaviour
     private Vector3 movePos; //キー入力の入れ物用
     private float moveDuration = 0.5f; //DOMoveの移動する際にかかる時間
     [SerializeField]
-    private float MaxMoveCount; //動ける最大回数
+    public static float MaxMoveCount=30; //動ける最大回数
     [SerializeField]
     private Tilemap tilemapCollider;　//衝突判定用
     [SerializeField]
@@ -94,6 +94,12 @@ public class MapMoveController : MonoBehaviour
         {
             Debug.Log(enemySymbol.symbolType);
             enemySymbol.StartBattle();
+        }
+
+        if (collision.TryGetComponent(out ItemSymbol inemySymbol))
+        {
+            Debug.Log(inemySymbol.symbolType);
+            inemySymbol.HealMoveCount();
         }
     }
 
