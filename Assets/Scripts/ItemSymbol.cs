@@ -2,26 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemSymbol : MonoBehaviour
+public class ItemSymbol : SymbolBase
 {
-    public SymbolType symbolType;
-   
-   
+    public override void TriggerSymbol()
+    {
+        base.TriggerSymbol();
+        HealMoveCount();
+    }
+
+
 
     public void HealMoveCount()
     {
         GameData.instance.MaxMoveCount += 10;
-       
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-       
+
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void DestroySymbol()
     {
-        
+        base.DestroySymbol();
+
     }
 }
+    

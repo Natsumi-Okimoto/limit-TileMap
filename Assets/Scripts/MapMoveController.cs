@@ -90,17 +90,21 @@ public class MapMoveController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out EnemySymbol enemySymbol))
-        {
-            Debug.Log(enemySymbol.symbolType);
-            enemySymbol.StartBattle();
-        }
+        //if(collision.TryGetComponent(out EnemySymbol enemySymbol))
+        //{
+        //    Debug.Log(enemySymbol.symbolType);
+        //    enemySymbol.StartBattle();
+        //}
 
-        if (collision.TryGetComponent(out ItemSymbol inemySymbol))
+        //if (collision.TryGetComponent(out ItemSymbol inemySymbol))
+        //{
+        //    Debug.Log(inemySymbol.symbolType);
+        //    inemySymbol.HealMoveCount();
+        //    Destroy(collision.gameObject);
+        //}
+        if (collision.TryGetComponent(out SymbolBase symbolBase))
         {
-            Debug.Log(inemySymbol.symbolType);
-            inemySymbol.HealMoveCount();
-            Destroy(collision.gameObject);
+            symbolBase.TriggerSymbol();
         }
     }
 
