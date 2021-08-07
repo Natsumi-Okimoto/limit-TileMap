@@ -11,7 +11,8 @@ public class EnemySymbol : SymbolBase
     }
     public void StartBattle()
     {
-        SceneStateManager.instance.NextScene(SceneName.Battle);
+        //SceneStateManager.instance.NextScene(SceneName.Battle);
+        SceneStateManager.instance.PreparateBatlleScene();
 
     }
 
