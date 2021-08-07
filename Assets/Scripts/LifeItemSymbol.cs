@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemSymbol : SymbolBase
+public class LifeItemSymbol : SymbolBase
 {
     public override void TriggerSymbol()
     {
@@ -17,6 +17,8 @@ public class ItemSymbol : SymbolBase
         GameData.instance.MaxMoveCount += 10;
 
     }
+
+
 
     protected override void DestroySymbol()
     {
