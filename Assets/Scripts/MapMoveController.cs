@@ -8,8 +8,8 @@ public class MapMoveController : MonoBehaviour
 {
     private Vector3 movePos; //キー入力の入れ物用
     private float moveDuration = 0.5f; //DOMoveの移動する際にかかる時間
-    [SerializeField]
-    public static float MaxMoveCount=30; //動ける最大回数
+    //[SerializeField]
+    //public static float MaxMoveCount=30; //動ける最大回数
     [SerializeField]
     private Tilemap tilemapCollider;　//衝突判定用
     [SerializeField]
@@ -37,7 +37,7 @@ public class MapMoveController : MonoBehaviour
         {
             return;
         }
-        if (MaxMoveCount == 0)
+        if (GameData.instance.MaxMoveCount == 0)
         {
             return;
             
@@ -69,10 +69,10 @@ public class MapMoveController : MonoBehaviour
             }
             else // Grid 以外の場合
             {
-                if (MaxMoveCount > 0)
+                if (GameData.instance.MaxMoveCount > 0)
                 {
                     Move(transform.position + movePos);
-                    MaxMoveCount--;
+                    GameData.instance.MaxMoveCount--;
                 }
             }
         }
@@ -100,6 +100,7 @@ public class MapMoveController : MonoBehaviour
         {
             Debug.Log(inemySymbol.symbolType);
             inemySymbol.HealMoveCount();
+            Destroy(collision.gameObject);
         }
     }
 

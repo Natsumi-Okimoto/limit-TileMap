@@ -10,7 +10,7 @@ public class ItemSymbol : MonoBehaviour
 
     public void HealMoveCount()
     {
-        MapMoveController.MaxMoveCount+= 10;
+        GameData.instance.MaxMoveCount += 10;
        
     }
     // Start is called before the first frame update

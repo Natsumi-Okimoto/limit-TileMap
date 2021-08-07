@@ -24,7 +24,7 @@ public class StaticClassWindow : EditorWindow
     {
         scroll = EditorGUILayout.BeginScrollView(scroll);
 
-        EditorGUILayout.FloatField("MaxMoveCount", MapMoveController.MaxMoveCount);
+        EditorGUILayout.FloatField("MaxMoveCount", GameData.instance.MaxMoveCount);
 
         EditorGUILayout.EndScrollView();
     }
