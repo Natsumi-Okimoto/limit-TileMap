@@ -16,6 +16,7 @@ public class MapMoveController : MonoBehaviour
     private bool isMoving;　//動けるかの判定
 
     private Tween tween;
+    public UIManager uiManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +74,7 @@ public class MapMoveController : MonoBehaviour
                 {
                     Move(transform.position + movePos);
                     GameData.instance.MaxMoveCount--;
+                    uiManager.UpdateDisplayMoveCount(GameData.instance.MaxMoveCount);
                 }
             }
         }
@@ -106,6 +108,13 @@ public class MapMoveController : MonoBehaviour
         {
             symbolBase.TriggerSymbol();
         }
+    }
+
+    private void UpdateHP()
+    {
+        GameData.instance.HitPoint -= GameData.instance.EnemyAttackPower;
+        // Hp の値の上限・下限を確認して範囲内に制限
+        GameData.instance.HitPoint = Mathf.Clamp(GameData.instance.HitPoint, 0, GameData.instance.MaxHitPoint);
     }
 
 }

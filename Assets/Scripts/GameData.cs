@@ -21,6 +21,8 @@ public class GameData : MonoBehaviour
 
     public float MaxMoveCount;
     public int HitPoint;
+    public int EnemyAttackPower;
+    public int MaxHitPoint;
 
     // Start is called before the first frame update
     void Start()
