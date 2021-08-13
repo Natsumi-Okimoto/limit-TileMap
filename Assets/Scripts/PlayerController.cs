@@ -36,13 +36,24 @@ public class PlayerController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            AttackMotion();
+        }
+
+        if (Input.GetKey(KeyCode.X))
+        {
+            BlockMotion();
+        }
+
         //SyncMoveAnimation();
     }
 
     private void FixedUpdate()
     {
         Move();
+       
     }
     /// <summary>
     /// ˆÚ“®
@@ -107,4 +118,19 @@ public class PlayerController : MonoBehaviour
 
     // anim.SetFloat("Speed", move.magnitude);
     //}
+
+    private void AttackMotion()
+    {
+        anim.SetTrigger("Attack 0");
+    }
+
+    private void BlockMotion()
+    {
+        anim.SetTrigger("Block");
+    }
+
+    private void DamageMotion()
+    {
+        anim.SetBool("Damege",true);
+    }
 }
