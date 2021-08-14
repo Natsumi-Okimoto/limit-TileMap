@@ -20,7 +20,7 @@ public class MapMoveController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        uiManager.UpdateHPvar();
     }
 
     // Update is called once per frame
@@ -106,7 +106,7 @@ public class MapMoveController : MonoBehaviour
         //}
         if (collision.TryGetComponent(out SymbolBase symbolBase))
         {
-            symbolBase.TriggerSymbol();
+            symbolBase.TriggerSymbol(this);
         }
     }
 

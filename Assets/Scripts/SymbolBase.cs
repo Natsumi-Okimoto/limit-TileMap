@@ -7,7 +7,7 @@ public class SymbolBase : MonoBehaviour
      public SymbolType symbolType;
 
 
-    public virtual void TriggerSymbol()
+    public virtual void TriggerSymbol(MapMoveController mapMoveController)
     {
         DestroySymbol();
         //q‹Ÿ‚Ì’†‚Éˆ—‚ğ‘‚­

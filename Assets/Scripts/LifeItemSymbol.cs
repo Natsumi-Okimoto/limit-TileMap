@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LifeItemSymbol : SymbolBase
 {
-    public override void TriggerSymbol()
+    public override void TriggerSymbol(MapMoveController mapMoveController)
     {
-        base.TriggerSymbol();
+        base.TriggerSymbol(mapMoveController);
         HealMoveCount();
     }
 

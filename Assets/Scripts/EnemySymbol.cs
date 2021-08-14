@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemySymbol : SymbolBase
 {
-    public override void TriggerSymbol()
+    public override void TriggerSymbol(MapMoveController mapMoveController)
     {
-        base.TriggerSymbol();
+        base.TriggerSymbol(mapMoveController);
         StartBattle();
     }
     public void StartBattle()

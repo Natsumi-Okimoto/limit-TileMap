@@ -6,14 +6,15 @@ public class HitPointSymbol : SymbolBase
 {
     [SerializeField]
     public int HealPoint;
-    public override void TriggerSymbol()
+    public override void TriggerSymbol(MapMoveController mapMoveController)
     {
-        base.TriggerSymbol();
-        AddHitPoint();
+        base.TriggerSymbol(mapMoveController);
+        AddHitPoint(mapMoveController);
     }
 
-    public void AddHitPoint()
+    public void AddHitPoint(MapMoveController mapMoveController)
     {
         GameData.instance.HitPoint += HealPoint;
+        mapMoveController.uiManager.UpdateHPvar();
     }
 }
