@@ -25,4 +25,6 @@ public class UIManager : MonoBehaviour
         float value =(float) GameData.instance.HitPoint / GameData.instance.MaxHitPoint;
         slider.DOValue(value, 0.25f);
     }
+
+  
 }

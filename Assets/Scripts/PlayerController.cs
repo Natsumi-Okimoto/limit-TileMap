@@ -7,6 +7,10 @@ public class PlayerController : MonoBehaviour
 {
     [Header("移動速度")]
     public float moveSpeed;
+    [Header("ダッシュの速度")]
+    public float DashSpeed;
+    [Header("インターバル")]
+    public float AttackWait;
 
     private Rigidbody rb;
 
@@ -23,12 +27,26 @@ public class PlayerController : MonoBehaviour
     //private Vector2 lookDirection = new Vector2(0, -1.0f);
     
 
+    public enum PLAYER_STATE
+    {
+        WAIT,
+        READY,
+        ATTACK,
+        DASHAVOID,
+    }
+
+    public PLAYER_STATE playerState;
+     
+
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         Scale = transform.localScale.x;
+        playerState = PLAYER_STATE.READY;
+        Debug.Log(playerState);
     }
 
     // Update is called once per frame
@@ -39,35 +57,91 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            AttackMotion();
+            //ダッシュ移動の処理
+            DashMove();
+
+
+
+
+            if (playerState == PLAYER_STATE.READY)
+            {
+                //ステートをアタックに
+                playerState = PLAYER_STATE.ATTACK;
+                Debug.Log(playerState);
+                //攻撃アニメーションの再生
+                AttackMotion();
+                //その後ステートは待機状態へ
+                playerState = PLAYER_STATE.WAIT;
+                Debug.Log(playerState);
+
+
+            }else if (playerState == PLAYER_STATE.WAIT)
+            {
+                //ステートを回避に
+                playerState = PLAYER_STATE.DASHAVOID;
+                Debug.Log(playerState);
+                //スライディングモーション
+                SlidingMotion();
+                //その後またWAITへ
+                playerState = PLAYER_STATE.WAIT;
+                Debug.Log(playerState);
+            }
+
+
         }
 
-        if (Input.GetKey(KeyCode.X))
+        if (playerState == PLAYER_STATE.WAIT)
         {
-            BlockMotion();
+            //ステートがWAITなら設定したインターバルを減らしていく
+            AttackWait -= Time.deltaTime;
+            //０になればREADY状態へ移行
+            if (AttackWait <= 0)
+            {
+                playerState = PLAYER_STATE.READY;
+                Debug.Log(playerState);
+                
+            }
         }
+
+
+
+        if (Input.GetKey(KeyCode.X))
+            {
+                BlockMotion();
+            }
 
         //SyncMoveAnimation();
     }
 
     private void FixedUpdate()
     {
-        Move();
+       
+        Move(3);
        
     }
     /// <summary>
     /// 移動
     /// </summary>
-    private void Move()
+    private void Move(float Speed)
     {
         Vector3 moveDir = new Vector3(horizontal, 0, vertical).normalized;
 
-        rb.velocity = new Vector3(moveDir.x * moveSpeed,rb.velocity.y, moveDir.z * moveSpeed);
+        rb.velocity = new Vector3(moveDir.x * Speed, rb.velocity.y, moveDir.z * Speed);
 
         LookDirection(moveDir);
 
         anim.SetFloat("Speed", moveDir.x != 0 ? Mathf.Abs(moveDir.x) : Mathf.Abs(moveDir.z));
 
+    }
+
+    private void DashMove()
+    {
+        //Vector3 moveDir = new Vector3(horizontal, 0, vertical).normalized;
+
+        rb.AddForce(transform.right * 300);
+        Debug.Log(rb.velocity);
+
+        //LookDirection(moveDir);
     }
 
     /// <summary>
@@ -132,5 +206,10 @@ public class PlayerController : MonoBehaviour
     private void DamageMotion()
     {
         anim.SetBool("Damege",true);
+    }
+
+    private void SlidingMotion()
+    {
+        anim.SetTrigger("Sliding");
     }
 }

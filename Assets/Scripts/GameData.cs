@@ -23,7 +23,9 @@ public class GameData : MonoBehaviour
     public int HitPoint;
     public int EnemyAttackPower;
     public int MaxHitPoint;
-
+    [Header("現在のエネミーのHP")]
+    public int Enemyhp;
+    public int MaxEnemyHP;
     // Start is called before the first frame update
     void Start()
     {

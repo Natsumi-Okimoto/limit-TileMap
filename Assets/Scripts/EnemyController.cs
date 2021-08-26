@@ -6,8 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     //private string weapon = "Weapon";   // タグ指定用
 
-    [Header("現在のHP")]
-    public int hp;
+   
 
     [Header("移動速度の最小値")]
     public float minMoveSpeed;
@@ -21,6 +20,8 @@ public class EnemyController : MonoBehaviour
 
     private float moveSpeed;　　// 適用する移動速度
     private int attackPower;  // 適用する攻撃力
+    [SerializeField]
+    public BattleUIManager uIManager;
 
     public enum ENEMY_STATE
     {
@@ -44,6 +45,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         SetUpEnemyParameter();
+        uIManager.UpdateEnemyHPvar();
     }
 
     /// <summary>
@@ -85,7 +87,7 @@ public class EnemyController : MonoBehaviour
         // 待機状態
         if (enemyState == ENEMY_STATE.WAIT)
         {
-            Debug.Log("待機中 あと : " + actionTime + " 秒");
+           Debug.Log("待機中 あと : " + actionTime + " 秒");
             if (actionTime <= 0)
             {
                 CheckNextAction();
@@ -108,18 +110,21 @@ public class EnemyController : MonoBehaviour
         // 索敵範囲内で目的地(Playerの位置)がある場合、目的地まで移動する
         if (enemyState == ENEMY_STATE.ATTACK)
         {
-            if (Vector3.Distance(transform.position, destinationPos)>0.8f)
+            if (actionTime<=0||Vector3.Distance(transform.position,destinationPos)<=0.8f)
             {
-                Move();
-                Debug.Log("移動攻撃中");
-            }
-            else
-            {
-                // 目的地に着いたら攻撃
+                //目的地に着いたら攻撃
+                rb.velocity = new Vector3(0, rb.velocity.y, 0);
                 enemyState = ENEMY_STATE.READY;
                 StartCoroutine(Attack());
                 Debug.Log("攻撃");
                 return;
+            }
+            else if (actionTime > 0 || Vector3.Distance(transform.position, destinationPos) > 0.8f) 
+            {
+               
+                Move();
+                Debug.Log("移動攻撃中");
+                
             }
         }
     }
@@ -152,12 +157,13 @@ public class EnemyController : MonoBehaviour
     private void MoveAttack(GameObject player)
     {
         // 目的地を設定しておく
-        destinationPos = player.transform.position;
+        destinationPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
         // 移動する方向を設定する
         direction = (transform.position - destinationPos).normalized;
         // 移動する方向を向く
         //transform.LookAt(destinationPos);
         // UpdateのAttackの部分で移動させる
+        actionTime = Random.Range(1.0f, 2.0f);
         enemyState = ENEMY_STATE.ATTACK;
         //anim.SetBool("Run", true);
     }
