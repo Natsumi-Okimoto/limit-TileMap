@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float DashSpeed;
     [Header("インターバル")]
     public float AttackWait;
+    public float newAttackwait;
 
     private Rigidbody rb;
 
@@ -69,9 +70,9 @@ public class PlayerController : MonoBehaviour
                 playerState = PLAYER_STATE.ATTACK;
                 Debug.Log(playerState);
                 //攻撃アニメーションの再生
-                AttackMotion();
+                StartCoroutine(AttackMotion());
                 //その後ステートは待機状態へ
-                playerState = PLAYER_STATE.WAIT;
+                //playerState = PLAYER_STATE.WAIT;
                 Debug.Log(playerState);
 
 
@@ -99,6 +100,8 @@ public class PlayerController : MonoBehaviour
             {
                 playerState = PLAYER_STATE.READY;
                 Debug.Log(playerState);
+                //初期値に戻す
+                AttackWait = newAttackwait;
                 
             }
         }
@@ -137,9 +140,11 @@ public class PlayerController : MonoBehaviour
     private void DashMove()
     {
         //Vector3 moveDir = new Vector3(horizontal, 0, vertical).normalized;
+        Vector3 dashX = transform.right * horizontal;
+        Vector3 dashZ = transform.forward * vertical;
 
-        rb.AddForce(transform.right * 300);
-        Debug.Log(rb.velocity);
+        rb.AddForce((dashX+dashZ) * 300,ForceMode.Impulse);
+        //Debug.Log(rb.velocity);
 
         //LookDirection(moveDir);
     }
@@ -193,9 +198,13 @@ public class PlayerController : MonoBehaviour
     // anim.SetFloat("Speed", move.magnitude);
     //}
 
-    private void AttackMotion()
+    private IEnumerator AttackMotion()
     {
         anim.SetTrigger("Attack 0");
+
+        yield return new WaitForSeconds(1.0f);
+
+        playerState = PLAYER_STATE.WAIT;
     }
 
     private void BlockMotion()
@@ -211,5 +220,6 @@ public class PlayerController : MonoBehaviour
     private void SlidingMotion()
     {
         anim.SetTrigger("Sliding");
+        gameObject.layer = LayerMask.NameToLayer("Star");
     }
 }

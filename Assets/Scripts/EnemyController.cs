@@ -17,6 +17,9 @@ public class EnemyController : MonoBehaviour
     public int minAttackPower;
     [Header("攻撃力の最大値")]
     public int maxAttackPower;
+    [Header("現在のエネミーのHP")]
+    public int Enemyhp;
+    public int MaxEnemyHP;
 
     private float moveSpeed;　　// 適用する移動速度
     private int attackPower;  // 適用する攻撃力
@@ -45,7 +48,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         SetUpEnemyParameter();
-        uIManager.UpdateEnemyHPvar();
+        
     }
 
     /// <summary>
@@ -58,6 +61,8 @@ public class EnemyController : MonoBehaviour
         moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
         attackPower = Random.Range(minAttackPower, maxAttackPower);
         waitTime = Random.Range(3, 6);
+        Enemyhp = MaxEnemyHP;
+        uIManager.UpdateEnemyHPvar(Enemyhp, MaxEnemyHP);
 
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
