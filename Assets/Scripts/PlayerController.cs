@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [Header("インターバル")]
     public float AttackWait;
     public float newAttackwait;
+    [Header("攻撃力")]
+    public int Attackpower;
 
     private Rigidbody rb;
 
@@ -19,7 +21,8 @@ public class PlayerController : MonoBehaviour
     private float vertical;
 
     private float Scale;
-        
+    [SerializeField]
+    public EnemyController enemyController;
 
 
     
@@ -200,11 +203,13 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator AttackMotion()
     {
-        anim.SetTrigger("Attack 0");
+       
+    anim.SetTrigger("Attack 0");
 
         yield return new WaitForSeconds(1.0f);
 
         playerState = PLAYER_STATE.WAIT;
+
     }
 
     private void BlockMotion()
@@ -221,5 +226,14 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetTrigger("Sliding");
         gameObject.layer = LayerMask.NameToLayer("Star");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (playerState == PLAYER_STATE.ATTACK||other.CompareTag("Enemy"))
+        {
+            enemyController.Enemyhp -= Attackpower;
+            Debug.Log("攻撃中");
+        }
     }
 }
