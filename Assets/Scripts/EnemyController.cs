@@ -170,7 +170,7 @@ public class EnemyController : MonoBehaviour
         // Update‚ÌAttack‚Ì•”•ª‚ÅˆÚ“®‚³‚¹‚é
         actionTime = Random.Range(1.0f, 2.0f);
         enemyState = ENEMY_STATE.ATTACK;
-        //anim.SetBool("Run", true);
+        anim.SetBool("Run", true);
     }
 
     /// <summary>
@@ -183,7 +183,7 @@ public class EnemyController : MonoBehaviour
         direction = transform.position.normalized;
         enemyState = ENEMY_STATE.MOVE;
         actionTime = Random.Range(3, 5);
-        //anim.SetBool("Run", true);
+        anim.SetBool("Run", true);
     }
 
     /// <summary>
@@ -192,7 +192,7 @@ public class EnemyController : MonoBehaviour
     /// <param name="nextState">ENEMY_STATE</param>
     private void NextWait()
     {
-        //anim.SetBool("Run", false);
+        anim.SetBool("Run", false);
         actionTime = Random.Range(3, 6);
         enemyState = ENEMY_STATE.WAIT;
     }
@@ -217,6 +217,14 @@ public class EnemyController : MonoBehaviour
         NextWait();
     }
 
-   
+   public void Damage(int Attackpower)
+    {
+        Enemyhp -= Attackpower;
+        uIManager.UpdateEnemyHPvar(Enemyhp, MaxEnemyHP);
+        if (Enemyhp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     
 }

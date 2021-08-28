@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
     private float vertical;
 
     private float Scale;
-    [SerializeField]
-    public EnemyController enemyController;
+    //[SerializeField]
+    //public EnemyController enemyController;
 
 
     
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
                 playerState = PLAYER_STATE.DASHAVOID;
                 Debug.Log(playerState);
                 //スライディングモーション
-                SlidingMotion();
+                StartCoroutine(SlidingMotion());
                 //その後またWAITへ
                 playerState = PLAYER_STATE.WAIT;
                 Debug.Log(playerState);
@@ -222,18 +222,25 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("Damege",true);
     }
 
-    private void SlidingMotion()
+    private IEnumerator SlidingMotion()
     {
         anim.SetTrigger("Sliding");
         gameObject.layer = LayerMask.NameToLayer("Star");
+
+        yield return new WaitForSeconds(0.5f);
+
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (playerState == PLAYER_STATE.ATTACK||other.CompareTag("Enemy"))
+
+        if (playerState == PLAYER_STATE.ATTACK&&other.TryGetComponent(out EnemyController enemyController))
         {
-            enemyController.Enemyhp -= Attackpower;
+            enemyController.Damage(Attackpower);
             Debug.Log("攻撃中");
+            
+
         }
     }
 }
