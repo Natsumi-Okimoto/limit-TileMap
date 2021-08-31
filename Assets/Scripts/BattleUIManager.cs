@@ -11,6 +11,8 @@ public class BattleUIManager : MonoBehaviour
     [SerializeField]
     private Slider slider;
 
+
+
     public void UpdateEnemyHPvar(int Enemyhp,int MaxEnemyHP)
     {
         float enemyValue = (float)Enemyhp / MaxEnemyHP;

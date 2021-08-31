@@ -1622,7 +1622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010141028922, guid: 722924ec8a0056f4a8fb443b2fb65ff9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.9
+      value: 45.51
       objectReference: {fileID: 0}
     - target: {fileID: 4000010141028922, guid: 722924ec8a0056f4a8fb443b2fb65ff9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1773,19 +1773,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000010141028922, guid: 722924ec8a0056f4a8fb443b2fb65ff9, type: 3}
   m_PrefabInstance: {fileID: 797480075}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &890550805
-BoxCollider:
+--- !u!136 &890550805
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890550802}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.5, y: 7, z: 2.5}
-  m_Center: {x: 0, y: 3.5, z: 0}
+  m_Radius: 1.340498
+  m_Height: 8.178101
+  m_Direction: 1
+  m_Center: {x: -0.41769, y: 3.902378, z: 0}
 --- !u!54 &890550806
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1797,7 +1798,7 @@ Rigidbody:
   m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -1814,15 +1815,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917239a1edc6fbd439497dc43e3417bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minMoveSpeed: 30
-  maxMoveSpeed: 40
+  minMoveSpeed: 120
+  maxMoveSpeed: 120
   minAttackPower: 10
   maxAttackPower: 30
   Enemyhp: 0
   MaxEnemyHP: 20
   uIManager: {fileID: 1322680657}
+  battleManager: {fileID: 0}
   enemyState: 0
   searchArea: {fileID: 444258753}
+  isDOMove: 1
 --- !u!1001 &896355826
 PrefabInstance:
   m_ObjectHideFlags: 0

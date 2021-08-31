@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyController : MonoBehaviour
 {
-    //private string weapon = "Weapon";   // タグ指定用
+    
 
    
 
@@ -25,6 +26,8 @@ public class EnemyController : MonoBehaviour
     private int attackPower;  // 適用する攻撃力
     [SerializeField]
     public BattleUIManager uIManager;
+    [SerializeField]
+    public BattleManager battleManager;
 
     public enum ENEMY_STATE
     {
@@ -44,6 +47,10 @@ public class EnemyController : MonoBehaviour
     public SearchArea searchArea;
     private Vector3 destinationPos; // 索敵時の移動の目的地(Playerの位置情報)
     Vector3 direction;  // 移動する際の方向
+
+    Tween tween;
+
+    public bool isDOMove;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +80,22 @@ public class EnemyController : MonoBehaviour
         Debug.Log("MoveSpeed:" + moveSpeed);
         Debug.Log("AttackPower:" + attackPower);
     }
+    private void FixedUpdate()
+    {
+        //DOTweenによる移動を使わない場合
+        if (enemyState == ENEMY_STATE.ATTACK && !isDOMove)
+        {
+            if (Vector3.Distance(transform.position, destinationPos) <= 0.3f)
+            {
+                return;
+            }
+            if (rb.velocity.magnitude < 5)
+            {
+                Move();
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -84,10 +107,10 @@ public class EnemyController : MonoBehaviour
 
         // 行動用タイマーをカウントダウン
         actionTime -= Time.deltaTime;
-        //if (actionTime == 0)
-       // {
-           // return;
-       // }
+        if (actionTime <= 0)
+        {
+            CheckNextAction();
+        }
 
         // 待機状態
         if (enemyState == ENEMY_STATE.WAIT)
@@ -140,18 +163,55 @@ public class EnemyController : MonoBehaviour
     /// </summary>
    private void CheckNextAction()
     {
-        if (searchArea.isSearching)
+        // 現在のステートを基準に次の行動を設定する
+        switch (enemyState)
         {
-            if (searchArea.player != null)
-            {
-                MoveAttack(searchArea.player);
-                Debug.Log("移動して攻撃");
-            }
-        }
-        else
-        {
-            PreparateMove();
-            Debug.Log("移動準備");
+            case ENEMY_STATE.WAIT:
+                // 攻撃対象がいる場合
+                if (searchArea.isSearching && searchArea.player != null)
+                {
+                    // 索敵範囲内で目的地(Playerの位置)がある場合、目的地まで移動する
+                    if (isDOMove)
+                    {
+                        DOMove(searchArea.player);
+                    }
+                    else
+                    {
+                        MoveAttack(searchArea.player);
+                    }
+                    
+                    Debug.Log("移動して攻撃");
+                }
+                else
+                {
+                    if (isDOMove)
+                    {
+                        DOPreparateMove();
+                    }
+                    else
+                    {
+                        PreparateMove();
+                    }
+                    Debug.Log("移動準備");
+                }
+                break;
+                
+            case ENEMY_STATE.MOVE:
+                
+                NextWait();
+                break;
+                
+            case ENEMY_STATE.ATTACK:
+                // 目的地に着いたら攻撃
+                enemyState = ENEMY_STATE.READY;
+                StartCoroutine(Attack());
+                Debug.Log("攻撃");
+                break;
+                
+            case ENEMY_STATE.READY:
+            case ENEMY_STATE.SET_UP:
+            default:
+                break;
         }
     }
 
@@ -202,8 +262,10 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        rb.AddForce(-direction * moveSpeed);
-        Debug.Log(rb.velocity);
+        Debug.Log("移動攻撃中");
+        rb.velocity = new Vector3(-direction.x * moveSpeed, rb.velocity.y, -direction.z * moveSpeed);
+        //rb.AddForce(-direction * moveSpeed);
+        //Debug.Log(rb.velocity);
     }
 
     /// <summary>
@@ -223,8 +285,60 @@ public class EnemyController : MonoBehaviour
         uIManager.UpdateEnemyHPvar(Enemyhp, MaxEnemyHP);
         if (Enemyhp <= 0)
         {
+            //BattleManagerを呼び出して撃破カウント＋１]
+            battleManager.AddDestroyCount();
             Destroy(this.gameObject);
         }
     }
-    
+
+
+    /// <summary>
+    /// DOTween を利用した移動攻撃の方法
+    /// (Enemyのコライダーの IsTrigger 入れて Rigidbody の Use Gravity を切る => OnTriggerEnter で当たり判定が取れる) 
+    /// </summary>
+    /// <param name="player"></param>
+    private void DOMove(GameObject player)
+    {
+        tween = null;
+
+        actionTime = Random.Range(1.0f, 2.0f);
+
+        Vector3 targetPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+
+        tween = transform.DOMove(targetPos, actionTime).SetEase(Ease.InOutQuart);
+
+        enemyState = ENEMY_STATE.ATTACK;
+        anim.SetBool("Run", true);
+    }
+
+
+    /// <summary>
+    /// DOTween を利用した移動方法
+    /// </summary>
+    private void DOPreparateMove()
+    {
+        tween = null;
+
+        actionTime = Random.Range(3, 5);
+
+        direction = new Vector3(transform.position.x + Random.Range(3, 5), transform.position.y, transform.position.z + Random.Range(3, 5));
+
+        tween = transform.DOMove(direction, actionTime).SetEase(Ease.Linear);
+
+        enemyState=ENEMY_STATE.MOVE;
+
+        anim.SetBool("Run", true);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out PlayerController player))
+        {
+            if (enemyState == ENEMY_STATE.ATTACK || enemyState == ENEMY_STATE.READY)
+            {
+                //攻撃する
+                Debug.Log("攻撃ヒット");
+            }
+        }
+    }
 }
