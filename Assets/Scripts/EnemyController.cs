@@ -112,49 +112,8 @@ public class EnemyController : MonoBehaviour
             CheckNextAction();
         }
 
-        // 待機状態
-        if (enemyState == ENEMY_STATE.WAIT)
-        {
-           Debug.Log("待機中 あと : " + actionTime + " 秒");
-            if (actionTime <= 0)
-            {
-                CheckNextAction();
-                Debug.Log("待機終了");
-                //NextAction(ENEMY_STATE.MOVE);
-            }
-        }
-
-        //移動状態
-        if (enemyState == ENEMY_STATE.MOVE)
-        {
-            Move();
-            Debug.Log("移動中 あと : " + actionTime + " 秒");
-            if (actionTime <= 0)
-            {
-                NextWait();
-            }
-        }
-       
-        // 索敵範囲内で目的地(Playerの位置)がある場合、目的地まで移動する
-        if (enemyState == ENEMY_STATE.ATTACK)
-        {
-            if (actionTime<=0||Vector3.Distance(transform.position,destinationPos)<=0.8f)
-            {
-                //目的地に着いたら攻撃
-                rb.velocity = new Vector3(0, rb.velocity.y, 0);
-                enemyState = ENEMY_STATE.READY;
-                StartCoroutine(Attack());
-                Debug.Log("攻撃");
-                return;
-            }
-            else if (actionTime > 0 || Vector3.Distance(transform.position, destinationPos) > 0.8f) 
-            {
-               
-                Move();
-                Debug.Log("移動攻撃中");
-                
-            }
-        }
+        
+        
     }
 
 
