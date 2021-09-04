@@ -54,15 +54,17 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetUpEnemyParameter();
+        //SetUpEnemyParameter();
         
     }
 
     /// <summary>
     　　/// 敵のパラメータ(移動速度や攻撃力など)と状態を設定
     　　/// </summary>
-    private void SetUpEnemyParameter()
+    public void SetUpEnemyParameter(BattleManager battle,BattleUIManager battleUI)
     {
+        uIManager = battleUI;
+        battleManager = battle;
         enemyState = ENEMY_STATE.SET_UP;
         Debug.Log(enemyState);
         moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
