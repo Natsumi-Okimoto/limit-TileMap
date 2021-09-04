@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private float vertical;
 
     private float Scale;
+
+    public BattleUIManager uIManager;
     //[SerializeField]
     //public EnemyController enemyController;
 
@@ -51,11 +53,13 @@ public class PlayerController : MonoBehaviour
         Scale = transform.localScale.x;
         playerState = PLAYER_STATE.READY;
         Debug.Log(playerState);
+        CalcHP(0);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
@@ -242,5 +246,22 @@ public class PlayerController : MonoBehaviour
             
 
         }
+
+        if (other.TryGetComponent(out EnemyController enemyContrller))
+        {
+            if (enemyContrller.enemyState==EnemyController.ENEMY_STATE.ATTACK)
+            {
+                CalcHP(enemyContrller.attackPower);
+                Debug.Log("É_ÉÅÅ[ÉWÇéÛÇØÇΩ");
+            }
+            
+        }
+    }
+
+    private void CalcHP(int value)
+    {
+        GameData.instance.HitPoint -= value;
+        uIManager.UpdatePlayerHPvar();
+
     }
 }

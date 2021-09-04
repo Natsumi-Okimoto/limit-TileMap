@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
     public int MaxEnemyHP;
 
     private float moveSpeed;　　// 適用する移動速度
-    private int attackPower;  // 適用する攻撃力
+    public int attackPower;  // 適用する攻撃力
     [SerializeField]
     public BattleUIManager uIManager;
     [SerializeField]
