@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    //TODO UI‚Éc‚è‚ÌˆÚ“®‰ñ”‚ğ•\¦
+    [SerializeField]
+    public UIManager uI;
+    
 
 
     // Start is called before the first frame update
@@ -17,5 +19,10 @@ public class Stage : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnEnable()
+    {
+        uI.UpdateHPvar();
     }
 }
