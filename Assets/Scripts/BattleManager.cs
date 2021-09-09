@@ -17,6 +17,8 @@ public class BattleManager : MonoBehaviour
     public Transform rightTopTran;
     [SerializeField]
     public BattleUIManager battleUI;
+
+   
     // Start is called before the first frame update
     void Start()
     {

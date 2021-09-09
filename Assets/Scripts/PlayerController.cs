@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [Header("攻撃力")]
     public int Attackpower;
 
+    private bool isGameOver = false;             // GameOver状態の判定用。true ならゲームオーバー。
+
     private Rigidbody rb;
 
     private float horizontal;
@@ -62,6 +64,11 @@ public class PlayerController : MonoBehaviour
         
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+
+        if (isGameOver == true)
+        {
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -121,11 +128,17 @@ public class PlayerController : MonoBehaviour
             }
 
         //SyncMoveAnimation();
+
+       
     }
 
     private void FixedUpdate()
     {
-       
+        if (isGameOver == true)
+        {
+            return;
+        }
+
         Move(3);
        
     }
@@ -253,6 +266,7 @@ public class PlayerController : MonoBehaviour
             {
                 CalcHP(enemyContrller.attackPower);
                 Debug.Log("ダメージを受けた");
+                GameOverCheck();
             }
             
         }
@@ -263,5 +277,18 @@ public class PlayerController : MonoBehaviour
         GameData.instance.HitPoint -= value;
         uIManager.UpdatePlayerHPvar();
 
+    }
+
+    private void GameOverCheck()
+    {
+        if (GameData.instance.HitPoint <= 0)
+        {
+            isGameOver = true;
+
+            Debug.Log("GameOver");
+
+            uIManager.DisplayGameOverInfo();
+
+        }
     }
 }
