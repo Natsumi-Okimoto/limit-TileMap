@@ -8113,8 +8113,17 @@ MonoBehaviour:
   tileMapBase: {fileID: 284824096}
   tileMapWalk: {fileID: 950935352}
   tileMapCollision: {fileID: 1537990}
-  row: 10
-  column: 10
+  row: 12
+  column: 7
+  symbolGenerateDatasList:
+  - symbolBasePrefab: {fileID: 296441641}
+    symbolWeight: 250
+  - symbolBasePrefab: {fileID: 1026485942}
+    symbolWeight: 70
+  - symbolBasePrefab: {fileID: 1435637712}
+    symbolWeight: 50
+  specialSymbolGenerateDatasList: []
+  generateSymbolRate: 20
 --- !u!4 &1111644177
 Transform:
   m_ObjectHideFlags: 0
