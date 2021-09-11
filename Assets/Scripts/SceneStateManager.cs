@@ -10,6 +10,11 @@ public class SceneStateManager : MonoBehaviour
     [SerializeField]
     public Stage stage;
 
+    [SerializeField]
+    public Fade fade;
+    [SerializeField]
+    public float fadeDuration;
+
     private void Awake()
     {
         if (instance==null)
@@ -43,7 +48,9 @@ public class SceneStateManager : MonoBehaviour
     /// <param name="nextLoadSceneName"></param>
     public void PreparateStageScene(SceneName nextLoadSceneName)
     {
-        StartCoroutine(LoadStageScene(nextLoadSceneName));
+        fade.FadeIn(fadeDuration,()=> { StartCoroutine(LoadStageScene(nextLoadSceneName)); });
+
+        
     }
     /// <summary>
     /// Stageシーンへ遷移
@@ -65,6 +72,8 @@ public class SceneStateManager : MonoBehaviour
 
         stage.gameObject.SetActive(true);//チェックを付ける
 
+        fade.FadeOut(fadeDuration);
+
         SceneManager.UnloadSceneAsync(oldSceneName);//Battleシーンの破棄
     }
     /// <summary>
@@ -74,7 +83,9 @@ public class SceneStateManager : MonoBehaviour
     {
         Debug.Log("Load Battle Scene");
 
-        StartCoroutine(LoadBattleScene());
+        fade.FadeIn(fadeDuration,()=> { StartCoroutine(LoadBattleScene()); });
+
+        
     }
     /// <summary>
     /// Battleシーンへの遷移
@@ -89,6 +100,8 @@ public class SceneStateManager : MonoBehaviour
         yield return new WaitUntil(() => scene.isLoaded);
 
         stage.gameObject.SetActive(false);
+
+        fade.FadeOut(fadeDuration);
 
         SceneManager.SetActiveScene(scene);
     }
