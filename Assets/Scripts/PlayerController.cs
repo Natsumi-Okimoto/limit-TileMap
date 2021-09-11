@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isGameOver == true)
         {
+            rb.velocity = Vector3.zero;
             return;
         }
 
@@ -286,6 +287,8 @@ public class PlayerController : MonoBehaviour
             isGameOver = true;
 
             Debug.Log("GameOver");
+
+            anim.SetBool("Die", true);
 
             uIManager.DisplayGameOverInfo();
 
