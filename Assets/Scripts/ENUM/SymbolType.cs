@@ -7,5 +7,6 @@ public enum SymbolType
   enemy,
   life,
   moveLife,
+  Orb
 
 }
