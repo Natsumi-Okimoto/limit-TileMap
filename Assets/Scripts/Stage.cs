@@ -13,6 +13,9 @@ public class Stage : MonoBehaviour
     [SerializeField]
     private MapMoveController mapMoveController;
 
+    
+
+
     public enum TurnState
     {
         None,
@@ -51,6 +54,8 @@ public class Stage : MonoBehaviour
         currentTurnState = TurnState.Player;
 
         // TODO エネミーのシンボルに侵入できるようにする(特殊シンボル使う場合)
+
+        GameData.instance.carrentWaveCount++;
     }
 
     /// <summary>
@@ -131,8 +136,16 @@ public class Stage : MonoBehaviour
         // 移動できるか確認
         if (GameData.instance.MaxMoveCount <= 0)
         {
-            // 移動できないなら、ボスのターンにする
-            currentTurnState = TurnState.Boss;
+            if (GameData.instance.carrentWaveCount <= GameData.instance.MaxWaveCount)
+            {
+                SceneStateManager.instance.NextScene(SceneName.Main);
+            }
+            else
+            {
+                // 移動できないかつウェーブが最大なら、ボスのターンにする
+                currentTurnState = TurnState.Boss;
+            }
+            
         }
         else
         {

@@ -27,6 +27,7 @@ public class MapMoveController : MonoBehaviour
 
     private int steppingRecoveryPoint = 3; // ‘«“¥‚İ‚µ‚½‚Æ‚«‚Ì HP ‰ñ•œ—Ê
 
+    [SerializeField]
     private UnityEvent<MapMoveController> enemySymbolTriggerEvent;
 
     private UnityEvent<MapMoveController> orbSymbolTiggerEvent;
@@ -39,7 +40,11 @@ public class MapMoveController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InputMove();
+        if (stage!=null)
+        {
+            InputMove();
+        }
+        
     }
     /// <summary>
     /// ƒL[“ü—Í”»’è

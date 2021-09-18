@@ -26,6 +26,9 @@ public class GameData : MonoBehaviour
     [Header("現在のエネミーのHP")]
     public int Enemyhp;
     public int MaxEnemyHP;
+    public int MaxWaveCount;
+    [SerializeField, Header("現在ウェーブの値")]
+    public int carrentWaveCount;
     // Start is called before the first frame update
     void Start()
     {
