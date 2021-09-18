@@ -27,7 +27,7 @@ public class MapMoveController : MonoBehaviour
 
     private int steppingRecoveryPoint = 3; // 足踏みしたときの HP 回復量
 
-    [SerializeField]
+  
     private UnityEvent<MapMoveController> enemySymbolTriggerEvent;
 
     private UnityEvent<MapMoveController> orbSymbolTiggerEvent;
@@ -52,7 +52,7 @@ public class MapMoveController : MonoBehaviour
     public void InputMove()
     {
         // プレイヤーの番でなければ処理しない
-        if (stage.currentTurnState != Stage.TurnState.Player)
+        if (stage.CurrentTurnState != Stage.TurnState.Player)
         {
             return;
         }
@@ -192,7 +192,7 @@ public class MapMoveController : MonoBehaviour
     public void Stepping()
     {
         // プレイヤーの番でなければ処理しない
-        if (stage.currentTurnState != Stage.TurnState.Player)
+        if (stage.CurrentTurnState != Stage.TurnState.Player)
         {
             return;
         }

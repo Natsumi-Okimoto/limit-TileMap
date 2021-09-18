@@ -13,6 +13,8 @@ public class Stage : MonoBehaviour
     [SerializeField]
     private MapMoveController mapMoveController;
 
+    private TurnState currentTurnState;
+
     
 
 
@@ -24,7 +26,7 @@ public class Stage : MonoBehaviour
         Boss
     }
 
-    public TurnState currentTurnState
+    public TurnState CurrentTurnState
     {
         set => currentTurnState = value;
         get => currentTurnState;
@@ -102,7 +104,7 @@ public class Stage : MonoBehaviour
         Debug.Log("OnEnable");
 
         // HP の更新
-        uI.UpdateHPvar();
+        //uI.UpdateHPvar();
 
            // TODO バトル後にレベルアップした時のカウントの初期化?
 
@@ -133,6 +135,10 @@ public class Stage : MonoBehaviour
     /// </summary>
     private void CheckTurn()
     {
+        if (GameData.instance==null)
+        {
+            return;
+        }
         // 移動できるか確認
         if (GameData.instance.MaxMoveCount <= 0)
         {

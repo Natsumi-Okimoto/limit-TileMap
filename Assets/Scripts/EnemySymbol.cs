@@ -65,6 +65,8 @@ public class EnemySymbol : SymbolBase
         // ƒV[ƒ“‘JˆÚ‚Ì€”õ
         SceneStateManager.instance.PreparateBatlleScene();
 
+        Debug.Log("Start");
+
     }
 
     /// <summary>
