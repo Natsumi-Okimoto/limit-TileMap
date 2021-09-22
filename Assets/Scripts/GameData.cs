@@ -29,6 +29,7 @@ public class GameData : MonoBehaviour
     public int MaxWaveCount;
     [SerializeField, Header("現在ウェーブの値")]
     public int carrentWaveCount;
+    public int attackPower;
     // Start is called before the first frame update
     void Start()
     {

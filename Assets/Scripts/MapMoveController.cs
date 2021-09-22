@@ -18,6 +18,12 @@ public class MapMoveController : MonoBehaviour
     [SerializeField]
     public bool isMoving;　//動けるかの判定
 
+    [SerializeField]
+    private List<PlayerConditionBase> conditionsList = new List<PlayerConditionBase>(); //　コンディション用のリスト
+
+    [SerializeField]
+    private Transform conditionEffectTran; //　コンディション付与時にプレイヤーのどの辺りにエフェクトを表示するかの位置の設定
+
     private Tween tween;
     public UIManager uiManager;
 
@@ -35,6 +41,16 @@ public class MapMoveController : MonoBehaviour
     void Start()
     {
         uiManager.UpdateHPvar();
+
+        // MapMoveController クラスのアタッチされているゲームオブジェクト(Player)に新しいクラス(PlayerCondition_Fatigue)を追加する
+        PlayerConditionBase condition = gameObject.AddComponent<PlayerCondition_Fatigue>();
+
+        // PlayerConditionBase クラスの AddCondition メソッドを実行する。
+        // 引数は左から順番に(コンディションの種類、コンディションの持続時間、コンディションの効果(今回は攻撃力に乗算する値)、MapMoveController クラス、SymbolManager クラス)
+        condition.AddCondition(ConditionType.Fatigue, 5, 0.5f, this,stage.GetSymbolManager());
+
+        // コンディション用のリストに追加
+        conditionsList.Add(condition);
     }
 
     // Update is called once per frame
@@ -241,9 +257,65 @@ public class MapMoveController : MonoBehaviour
     }
     //private void UpdateHP()
     //{
-        //GameData.instance.HitPoint -= GameData.instance.EnemyAttackPower;
-        // Hp の値の上限・下限を確認して範囲内に制限
-        //GameData.instance.HitPoint = Mathf.Clamp(GameData.instance.HitPoint, 0, GameData.instance.MaxHitPoint);
+    //GameData.instance.HitPoint -= GameData.instance.EnemyAttackPower;
+    // Hp の値の上限・下限を確認して範囲内に制限
+    //GameData.instance.HitPoint = Mathf.Clamp(GameData.instance.HitPoint, 0, GameData.instance.MaxHitPoint);
     //}
 
+    /// <summary>
+    /// 引数に指定されたコンディションが付与されているか確認
+    /// </summary>
+    /// <param name="conditionType"></param>
+    /// <returns></returns>
+    public bool JudgeConditionType(ConditionType conditionType)
+    {
+        return conditionsList.Find(x => x.GetConditionType() == conditionType);
+    }
+
+    /// <summary>
+    /// コンディション用のエフェクト生成位置の取得
+    /// </summary>
+    /// <returns></returns>
+    public Transform GetConditionEffectTran()
+    {
+        return conditionEffectTran;
+    }
+
+    /// <summary>
+    /// 現在のコンディションの状態の残り時間を更新
+    /// </summary>
+    public void UpdateConditionsDuration()
+    {
+        for(int i = 0; i < conditionsList.Count; i++)
+        {
+            conditionsList[i].CalcDuration();
+        }
+    }
+
+    /// <summary>
+    /// コンディションを追加
+    /// </summary>
+    /// <param name="playerCondition"></param>
+    public void AddConditionsList(PlayerConditionBase playerCondition)
+    {
+        conditionsList.Add(playerCondition);
+    }
+
+    /// <summary>
+    /// コンディションを削除
+    /// </summary>
+    public void RemoveConditionsList(PlayerConditionBase playerCondition)
+    {
+        conditionsList.Remove(playerCondition);
+        Destroy(playerCondition);
+    }
+
+    /// <summary>
+    /// コンディションの List を取得
+    /// </summary>
+    /// <returns></returns>
+    public List<PlayerConditionBase> GetConditionsList()
+    {
+        return conditionsList;
+    }
 }
