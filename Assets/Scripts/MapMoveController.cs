@@ -43,14 +43,14 @@ public class MapMoveController : MonoBehaviour
         uiManager.UpdateHPvar();
 
         // MapMoveController クラスのアタッチされているゲームオブジェクト(Player)に新しいクラス(PlayerCondition_Fatigue)を追加する
-        PlayerConditionBase condition = gameObject.AddComponent<PlayerCondition_Fatigue>();
+        //PlayerConditionBase condition = gameObject.AddComponent<PlayerCondition_Fatigue>();
 
         // PlayerConditionBase クラスの AddCondition メソッドを実行する。
         // 引数は左から順番に(コンディションの種類、コンディションの持続時間、コンディションの効果(今回は攻撃力に乗算する値)、MapMoveController クラス、SymbolManager クラス)
-        condition.AddCondition(ConditionType.Fatigue, 5, 0.5f, this,stage.GetSymbolManager());
+        //condition.AddCondition(ConditionType.Fatigue, 5, 0.5f, this,stage.GetSymbolManager());
 
         // コンディション用のリストに追加
-        conditionsList.Add(condition);
+        //conditionsList.Add(condition);
     }
 
     // Update is called once per frame
@@ -85,6 +85,12 @@ public class MapMoveController : MonoBehaviour
         //キー入力の受け取り
         movePos.x = Input.GetAxisRaw("Horizontal");
         movePos.y = Input.GetAxisRaw("Vertical");
+
+        //取得タイミングによって不用意な数値が入るので、その場合には処理しない
+        if (movePos == Vector3.zero)
+        {
+            return;
+        }
 
         if (movePos.x != 0||movePos.y!=0)
         {
@@ -134,19 +140,7 @@ public class MapMoveController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // メソッドの開始時にチェックが入っているのでコメントアウト
-        //if(collision.TryGetComponent(out EnemySymbol enemySymbol))
-        //{
-        //    Debug.Log(enemySymbol.symbolType);
-        //    enemySymbol.StartBattle();
-        //}
-
-        //if (collision.TryGetComponent(out ItemSymbol inemySymbol))
-        //{
-        //    Debug.Log(inemySymbol.symbolType);
-        //    inemySymbol.HealMoveCount();
-        //    Destroy(collision.gameObject);
-        //}
+        //Symbolスクリプトがついているか確認して処理を実行
         if (collision.TryGetComponent(out SymbolBase symbolBase))
         {
             //symbolBase.TriggerSymbol(this);
@@ -255,12 +249,7 @@ public class MapMoveController : MonoBehaviour
     {
         return stage;
     }
-    //private void UpdateHP()
-    //{
-    //GameData.instance.HitPoint -= GameData.instance.EnemyAttackPower;
-    // Hp の値の上限・下限を確認して範囲内に制限
-    //GameData.instance.HitPoint = Mathf.Clamp(GameData.instance.HitPoint, 0, GameData.instance.MaxHitPoint);
-    //}
+    
 
     /// <summary>
     /// 引数に指定されたコンディションが付与されているか確認

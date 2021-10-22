@@ -267,11 +267,45 @@ public class PlayerController : MonoBehaviour
             {
                 CalcHP(enemyContrller.attackPower);
                 Debug.Log("ダメージを受けた");
+                // デバフ付与の判定
+                JudgeDebuffCondition(enemyContrller.GetEnemyData());
                 GameOverCheck();
             }
             
         }
     }
+
+    /// <summary>
+    /// デバフ付与の判定
+    /// </summary>
+    public void JudgeDebuffCondition(EnemyData enemyData)
+    {
+        // エネミー側にデバフの付与設定がない場合には処理しない
+        if (enemyData.debuffDatas.Length == 0)
+        {
+            return;
+        }
+
+        // エネミー側に設定されているデバフの数だけ判定
+        for (int i = 0; i < enemyData.debuffDatas.Length; i ++){
+            // 乱数が付与確率以下なら
+            if (Random.Range(0, 100) <= enemyData.debuffDatas[i].rate)
+            {
+                // デバフ付与
+                AddDebuffCondition(enemyData.debuffDatas[i].debuffConditionType);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 指定したタイプのデバフを付与し、GameData にて保持。Stage シーンに戻ってから適用
+    /// </summary>
+    /// <param name="debuffConditionType"></param>
+    private void AddDebuffCondition(ConditionType debuffConditionType)
+    {
+        GameData.instance.debuffConditionsList.Add(debuffConditionType);
+    }
+
 
     private void CalcHP(int value)
     {

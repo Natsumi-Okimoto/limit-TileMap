@@ -29,6 +29,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     public BattleManager battleManager;
 
+    public EnemyData enemyData;
+
     public enum ENEMY_STATE
     {
         SET_UP,
@@ -301,5 +303,10 @@ public class EnemyController : MonoBehaviour
                 Debug.Log("UŒ‚ƒqƒbƒg");
             }
         }
+    }
+
+    public EnemyData GetEnemyData()
+    {
+        return enemyData;
     }
 }
